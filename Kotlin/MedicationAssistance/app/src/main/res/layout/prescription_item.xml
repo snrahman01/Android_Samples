@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="medicine"
+            type="com.example.medicationassistance.db.entity.PrescribedMedicine" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_side_margin"
+        android:layout_marginEnd="@dimen/card_side_margin"
+        android:layout_marginBottom="@dimen/card_bottom_margin"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/alarm"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_schedule_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/medi_name"
+                style="@style/title"
+                android:maxLines="1"
+                tools:text="@string/demo_medi_name"
+                android:text="@{medicine.mMediName}"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/alarm"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/medi_taken_time_left"
+                app:layout_constraintBottom_toTopOf="@+id/medi_des"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/medi_des"
+                style="@style/textStyleMediDes"
+                android:text="@{medicine.mMediDes}"
+                app:layout_constraintBottom_toTopOf="@id/medi_taken_freq"
+                app:layout_constraintEnd_toStartOf="@+id/medi_taken_time_left"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@+id/alarm"
+                app:layout_constraintTop_toBottomOf="@+id/medi_name"
+                android:hint="@string/medi_des"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/medi_taken_freq"
+                style="@style/textStyleMediDes"
+                android:text='@{ medicine.mMediFreq +  " times per day"}'
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/medi_meal"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@+id/alarm"
+                app:layout_constraintTop_toBottomOf="@+id/medi_des"
+                tools:text="@string/demo_medi_freq" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/medi_meal"
+                style="@style/textStyleMediDes"
+                tools:text="@string/demo_medi_meal"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintTop_toBottomOf="@+id/medi_des"
+                app:layout_constraintEnd_toStartOf="@+id/medi_taken_time_left"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/medi_taken_time_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                android:text="@string/demo_medi_time" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

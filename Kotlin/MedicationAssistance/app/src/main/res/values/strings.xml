@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Medication Assistance</string>
+    <string name="demo_medi_name">"Sample"</string>
+    <string name="demo_medi_time">"5hr"</string>
+    <string name="demo_medi_freq">"3 times per day"</string>
+    <string name="demo_medi_meal">"after meal"</string>
+    <string name="medi_name">"Medicine Name"</string>
+    <string name="medi_des">"Medicine Description"</string>
+    <string name="switch_meal">"After Meal"</string>
+    <string name="hint_medi_freq">"medicine taken per day"</string>
+    <string name="save">"Save"</string>
+</resources>

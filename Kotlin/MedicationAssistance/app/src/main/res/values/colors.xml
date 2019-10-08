@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#00574B</color>
+    <color name="colorTitle">#313233</color>
+    <color name="colorSubTitle">#9599a1</color>
+    <color name="colorTimeLeftWarn">#b80404</color>
+    <color name="colorTimeLeftSafe">#008577</color>
+</resources>

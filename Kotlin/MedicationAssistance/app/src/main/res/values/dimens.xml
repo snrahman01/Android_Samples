@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_side_margin">4dp</dimen>
+    <dimen name="card_bottom_margin">4dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="recycler_top_padding">4dp</dimen>
+    <dimen name="recycler_bottom_padding">4dp</dimen>
+</resources>
