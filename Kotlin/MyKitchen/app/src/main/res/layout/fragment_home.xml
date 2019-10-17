@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/hello_text"
+        android:layout_width="368dp"
+        android:layout_height="81dp"
+        android:textAlignment="center"
+        android:textSize="62sp"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorAccent"
+        android:text="@string/hello_home"
+        android:textStyle="bold"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/home_image"/>
+    <Button
+        android:id="@+id/about_btn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="144dp"
+        android:layout_height="48dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/title_about"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/home_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+        android:id="@+id/home_image"
+        android:layout_width="362dp"
+        android:layout_height="225dp"
+        android:layout_margin="4dp"
+        android:src="@drawable/food_serving"
+        app:layout_constraintTop_toBottomOf="@+id/hello_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/about_btn"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

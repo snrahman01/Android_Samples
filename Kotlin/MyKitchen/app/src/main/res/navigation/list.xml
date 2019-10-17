@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    app:startDestination="@id/foodlist">
+    <fragment
+        android:id="@+id/foodlist"
+        android:name="com.example.mykitchen.ui.fragments.FoodItemsFragment"
+        android:label="@string/title_list"
+        tools:layout="@layout/fragment_food_items">
+        <action
+            android:id="@+id/action_foodlist_to_foodDetails"
+            app:destination="@id/foodDetails"/>
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetails"
+        android:name="com.example.mykitchen.ui.fragments.FoodDetailsFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_food_details">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.example.com/user/{userName}"
+            android:autoVerify="true"/>
+        <argument
+            android:name="userName"
+            app:argType="string"/>
+    </fragment>
+</navigation>
