@@ -1,4 +1,4 @@
-# My Kithen
+# My Kitchen
 ### This sample showing the behavior of navigation
 
 Home            |  About
