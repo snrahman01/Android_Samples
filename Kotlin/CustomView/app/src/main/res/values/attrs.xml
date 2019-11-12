@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClockView">
+        <attr name="clockDiameter" format="float"/>
+        <attr name="clockRoundColor" format="color"/>
+        <attr name="clockRoundBackColor" format="color"/>
+        <attr name="clockDialerColor" format="color"/>
+        <attr name="clockDialerCenterColor" format="color"/>
+        <attr name="clockCircleStrokWidth" format="float"/>
+    </declare-styleable>
+</resources>
