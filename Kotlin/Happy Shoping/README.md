@@ -1,4 +1,4 @@
-#Using Dagger For Dependency Injection(DI)
+# Using Dagger For Dependency Injection(DI)
 
 Dependency injection (DI) is a technique widely used in programming and well suited to Android development. By following the principles of DI, you lay the groundwork for a good app architecture.
 
@@ -13,6 +13,7 @@ We'll use Dagger as the DI tool to manage dependencies
 
 To add Dagger to our project, open the app/build.gradle file and add the two Dagger dependencies and the kapt plugin to the top of the file.
 
+```
 app/build.gradle
 
 apply plugin: 'kotlin-kapt'
@@ -25,6 +26,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }
+```
 
 Dagger is implemented using Java's annotations model. It generates code at compile-time using an annotation processor. 
 Annotation processors are supported in Kotlin with the kapt compiler plugin. They are enabled by adding apply plugin: 'kotlin-kapt' to the top of the file
@@ -32,7 +34,7 @@ Annotation processors are supported in Kotlin with the kapt compiler plugin. The
 In the dependencies, the dagger library contains all the annotations you can use in your app and dagger-compiler is the annotation processor that will generate the code for us.
 
 
-#Process
+# Process
 ## @Inject annotation
 To get Dagger know how to create instance of a class @Inject annotation used befor constructor in Kotlin.
 In given Sample ItemsViewModelFactory use @Inject in it constructor to get dagger know how to create a ItemsViewModelFactory.
@@ -41,20 +43,17 @@ Its has dependency in ItemsRepository.
 	```
 	class ItemsViewModelFactory
 	@Inject
-	constructor(private val repository: ItemsRepository)
-	
+	constructor(private val repository: ItemsRepository)	
 	```
 
 Now Dagger knows to create instance of ItemsViewModelFactory need ItemsRepository. But still Dagger anware how to create ItemsRepository.
 To get to know that We also follow the previous way that is use @Inject in construstor of ItemsRepository It has also a dependency on ItemDao.
 
 	```
-
 	class ItemsRepository
 
     	@Inject
     	constructor(private val itemDao: ItemDao)
-
 	```
 
 Now ItemDao is an interface which implementation is generated so Its implementation is not in my project.
@@ -69,7 +68,6 @@ In the app DaoModule provide dao and db instance. Two annotation to define depen
 Here use @Proveide in dao module to get ItemDao and DB instance.
 
 	```
-
 	@Module
 	class DaoModule {
 
@@ -83,7 +81,6 @@ Here use @Proveide in dao module to get ItemDao and DB instance.
         		return HappyShopingDatabase.getDatabase(context)
     		}
 	}
-
 	```
 
 As mentioned before @Inject used in constructor of a class to infrom Dagger how to create its instance.
@@ -107,7 +104,6 @@ activity needs to go to the onCreate method. So we can't use constructor injecti
 
 		...
 	}
-
 	```
 To tell the dagger which object we need to be injected we need to create dagger graph and use it to inject activity or fragment.
 
@@ -120,7 +116,6 @@ Dagger will create a Container. Inside di package create AppComponent.kt
    
     		fun inject(fragment: ItemListFragment)
 	}
-
 	```
 
 Since Dagger has to create an instance of ItemsViewModelFactory internally, it also needs to satisfy 
@@ -132,13 +127,11 @@ The dependencies which we provide through DaoModule the application graph need t
 we iinclude AppComponent with modules parameter inside the @Component annotation as follows:
 
 	```
-
 	@Component(modules = [DaoModule::class])
 	interface AppComponent {
 
     		fun inject(fragment: ItemListFragment)
 	}
-
 	```
 
 In DaoModule to get Database Instance we need Context. Context is provided by the Android system and therefore 
@@ -147,7 +140,6 @@ the graph, we can pass it in. The way to pass it in is with a Component Factory 
 
 
 	```
-
 	@Component(modules = [DaoModule::class])
 	interface AppComponent {
 
@@ -158,7 +150,6 @@ the graph, we can pass it in. The way to pass it in is with a Component Factory 
 
     		fun inject(fragment: ItemListFragment)
 	}
-
 	```
 
 We're declaring an interface called Factory annotated with @Component.Factory. Inside, there's a method that returns the 
@@ -176,14 +167,12 @@ As we want to have dagger graph as long as the app is running that is why we cre
 Add an instance of the dagger graph to our custom Application MyApplication
 
 	```
-
 	open class MyApplication: Application() {
 
     		val appComponent:AppComponent by lazy{
         		DaggerAppComponent.factory().create(applicationContext)
     		}
 	}
-
 	```
 
 We can use this instance of the graph in MainActivity to make Dagger inject the fields annotated with @Inject.
@@ -193,7 +182,6 @@ In this app get AppComponent in MainActivity and used it in ItemListFragment to 
 @Inject.
 
 	```
-
 	class MainActivity : AppCompatActivity() {
     		lateinit var appComponent: AppComponent
 
@@ -224,7 +212,6 @@ In this app get AppComponent in MainActivity and used it in ItemListFragment to 
    		...
 
 	}
-
 	```
 
 
@@ -236,7 +223,7 @@ In this app get AppComponent in MainActivity and used it in ItemListFragment to 
 > Dagger-injected fields cannot be private. They need to have at least package-private visibility.
 
 
-#Scope
+# Scope
 
 Every time we request for an instance in dagger graph it create a new instance. But some cases we need 
 to have a unique instance of a dependency in container.
@@ -264,7 +251,6 @@ use the same scope annotation for the @Component interface and ItemsRepository. 
 
     		...
     	}
-
 	```
 
 Now we can build and run the project. 
