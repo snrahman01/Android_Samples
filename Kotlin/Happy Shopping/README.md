@@ -1,4 +1,4 @@
-#Using Dagger For Dependency Injection(DI)
+# Using Dagger For Dependency Injection(DI)
 
 Dependency injection (DI) is a technique widely used in programming and well suited to Android development. By following the principles of DI, you lay the groundwork for a good app architecture.
 
@@ -32,7 +32,7 @@ Annotation processors are supported in Kotlin with the kapt compiler plugin. The
 In the dependencies, the dagger library contains all the annotations you can use in your app and dagger-compiler is the annotation processor that will generate the code for us.
 
 
-#Process
+# Process
 ## @Inject annotation
 To get Dagger know how to create instance of a class @Inject annotation used befor constructor in Kotlin.
 In given Sample ItemsViewModelFactory use @Inject in it constructor to get dagger know how to create a ItemsViewModelFactory.
@@ -236,7 +236,7 @@ In this app get AppComponent in MainActivity and used it in ItemListFragment to 
 > Dagger-injected fields cannot be private. They need to have at least package-private visibility.
 
 
-#Scope
+# Scope
 
 Every time we request for an instance in dagger graph it create a new instance. But some cases we need 
 to have a unique instance of a dependency in container.
